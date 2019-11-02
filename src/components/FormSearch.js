@@ -5,119 +5,54 @@ import { Button, Input, Label, Form, FormGroup } from 'reactstrap';
 
 export default class FormSearch extends React.Component {
 
+  state = { cities: ["", ""] }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      numberCitiesDisplayed: 3,
-      cities: {
-        city1: {
-          name: '',
-          visibility: true
-        },
-        city2: {
-          name: '',
-          visibility: true
-        },
-        city3: {
-          name: '',
-          visibility: true
-        },
-        city4: {
-          name: '',
-          visibility: false
-        },
-        city5: {
-          name: '',
-          visibility: false
-        }
-      }
-    };
-
-    this.handleCityFieldChange = this.handleCityFieldChange.bind(this);
-    this.search = this.search.bind(this);
-    this.showMore = this.showMore.bind(this);
-  }
-
-  handleCityFieldChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-
-  search = () => {
-
-
+  addCity = () => {
+    this.setState({ cities: [...this.state.cities, ""]});
   };
 
-  showMore = () => {
-    const numberCitiesDisplayed = this.state.numberCitiesDisplayed + 1
-    const city = 'city' + numberCitiesDisplayed
-    let cities = { ...this.state.cities }
-    if (cities[city]) {
-      cities[city].visibility = true;
-      this.setState({
-        cities,
-        numberCitiesDisplayed
-      });
-    }
-
+  handleChange(city, index) {
+    this.state.cities[index] = city.target.value;
+    this.setState({ cities: this.state.cities });
   };
+
+  handleRemove = (index) => {
+    this.state.cities.splice(index, 1);
+    this.setState({ cities: this.state.cities });
+  };
+
+  handleReset = () => {
+    this.setState({ cities: ["", ""] });
+  };
+
+
 
   render() {
+
     return (
+      <div>
+        {
+          this.state.cities.map((city, index) => {
+            return (
+              <div key={index}>
+                <input
+                  value={city}
+                  onChange={(city) => this.handleChange(city, index)}
+                />
+                <button onClick={this.handleRemove}>-</button>
+              </div>
+            )
+          })
+        }
 
-      <div className="travel-form">
-        <p>Where do you travel from?</p>
+        <hr />
 
-        <Form>
+        <button onClick={this.addCity}>+</button>
+        <button onClick={this.handleReset}>Reset</button>
 
-          <FormGroup check className="travel-checkbox">
-            <Label check>
-              <Input type="checkbox" />{' '}
-              Plane
-            </Label>
-            <Label check>
-              <Input type="checkbox" />{' '}
-              Train
-            </Label>
-            <Label check>
-              <Input type="checkbox" />{' '}
-              Bus
-            </Label>
-          </FormGroup>
 
-          <Button color="primary" onClick={this.showMore}>+</Button>
-          <div className="cities-input">
-            <Label>
-              <Input type="text" name="city1" value={this.state.cities.city1.name} onChange={this.handleCityFieldChange} />
-            </Label>
-          </div>
-          <div>
-            <Label>
-              <Input type="text" name="city2" value={this.state.cities.city2.name} onChange={this.handleCityFieldChange} />
-            </Label>
-          </div>
-          <div>
-            <Label>
-              <Input type="text" name="city3" value={this.state.cities.city3.name} onChange={this.handleCityFieldChange} />
-            </Label>
-          </div>
-          {this.state.cities.city4.visibility &&
-            <div>
-              <Label>
-                <Input type="text" name="city4" value={this.state.cities.city4.name} onChange={this.handleCityFieldChange} />
-              </Label>
-            </div>
-          }
-          {this.state.cities.city5.visibility &&
-            <div>
-              <Label>
-                <Input type="text" name="city5" value={this.state.cities.city5.name} onChange={this.handleCityFieldChange} />
-              </Label>
-            </div>
-          }
-        </Form>
       </div>
+    )
+  }
 
-        );
-      }
 }
