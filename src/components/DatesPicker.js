@@ -5,8 +5,7 @@ import onClickOutside from 'react-onclickoutside';
 
 class DatesPicker extends React.Component {
   state = {
-    datefrom: new Date(),
-    dateto: new Date(),
+    date: [],
     firstClick: true,
     showdate: false,
     showcalendar: false,
@@ -18,18 +17,10 @@ class DatesPicker extends React.Component {
 
 }
 
-
-  onSelectDate = date => {
-    if (this.state.firstClick) {
-      this.setState({ datefrom: date });
-
-    } else {
-      this.setState({ dateto: date });
-    }
-    this.setState({ firstClick: !this.state.firstClick })
-  }
-
-  onInputChange = date => {
+  onChange = date => {
+    console.log(this.state.date);
+    this.setState({ date });
+    console.log(this.state.date);
     this.setState({ showdate: true });
   };
 
@@ -50,16 +41,8 @@ class DatesPicker extends React.Component {
               <input
                 className="inputdatefrom"
                 type="text"
-                onChange={this.onInputChange}
                 onClick={this.showon}
-                value={this.state.showdate ? this.state.datefrom.toLocaleDateString() : 'departure'}
-              />
-              <input
-                className="inputdateto"
-                type="text"
-                onChange={this.onInputChange}
-                onClick={this.showon}
-                value={this.state.showdate ? this.state.dateto.toLocaleDateString() : 'return'}
+                value={this.state.showdate ? this.state.date[0].DatetoString() : 'enter dates'}
               />
             </div>
           </div>
@@ -71,8 +54,8 @@ class DatesPicker extends React.Component {
                 locale={"en"}
                 minDate={new Date()}
                 onClickOutside={this.handleClickOutside}
-                onClickDay={this.onSelectDate}
-                onChange={this.onInputChange}
+                onChange={this.onChange}
+                returnValue={"range"}
                 selectRange={true}
               />
               <button className="btn btn-date" onClick={this.showoff}>Ok</button>

@@ -32,9 +32,6 @@ export default class LocationSearchInput extends React.Component {
           }
       }
     }, true);
-    // if place === places Geocode
-    // change state
-    // else select first proposition before changing state
   };
 
   handleSelect = async address => {
@@ -121,5 +118,4 @@ export default class LocationSearchInput extends React.Component {
 
 // Return date cannnot be before departure date
 // Month navbar cannot be clickable
-// City can be only selected if it is from google places api
 // open div when clicking on btn to change number of people and manage state
