@@ -1,8 +1,7 @@
 import React from 'react';
-import NavBar from '../../../components/NavBar';
-import DatesPicker from '../../../components/DatesPicker';
-import LocationSearchInput from '../../../components/LocationSearchInput';
-import SelectedCities from '../../../components/SelectedCities';
+import DatesPicker from './DatesPicker';
+import LocationSearchInput from './LocationSearchInput';
+import SelectedCities from './SelectedCities';
 import './_FormSearch.scss';
 import { Label, FormGroup } from 'reactstrap';
 import {
@@ -201,7 +200,6 @@ export default class FormSearch extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
         <div className="travel-form">
           <div className="search-box">
             <DatesPicker
