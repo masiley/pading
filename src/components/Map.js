@@ -72,21 +72,18 @@ export default class Map extends React.Component {
             </div>
           ))}
         </ReactMapGL>
-        {this.props.citiesTo.map((city) =>
-          ReactDOM.createPortal(
-            <div>
-              <Popup modal open={this.state.openPopup === city.name}>
-                <DetailsResultsPopup
-                  destination={city.name}
-                  trips={this.props.trips}
-                  key={city.name}
-                  travelType={this.props.travelType}
-                />
-              </Popup>
-            </div>,
-            document.getElementById('cards-results')
-          )
-        )}
+        {this.props.citiesTo.map((city) => (
+          <div>
+            <Popup modal open={this.state.openPopup === city.name}>
+              <DetailsResultsPopup
+                destination={city.name}
+                trips={this.props.trips}
+                key={city.name}
+                travelType={this.props.travelType}
+              />
+            </Popup>
+          </div>
+        ))}
       </div>
     );
   }
