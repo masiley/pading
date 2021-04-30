@@ -82,7 +82,7 @@ export default function Result(props) {
         trips={props.search.trips}
         travelType={props.search.travelType}
       />
-      <div className="travel-results">
+      <div className="travel-results" id="travel-results">
         <div className="travel-results-cards">
           <div className="linear-progress-filter">
             <div className="linear-progress-div">
@@ -143,7 +143,7 @@ export default function Result(props) {
           )}
           <div id="cards-results-wrapper">
             {props.search.isLoading ? (
-              <div className="cards-results">
+              <div className="cards-results" id="cards-results">
                 <TripCardSkeleton />
                 <TripCardSkeleton />
                 <TripCardSkeleton />
@@ -158,7 +158,7 @@ export default function Result(props) {
                 <TripCardSkeleton />
               </div>
             ) : (
-              <div className="cards-results">
+              <div className="cards-results" id="cards-results">
                 {props.search.commonDestinations.map((destination, index) => {
                   return (
                     <div className={index} key={index}>
