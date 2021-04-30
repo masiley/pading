@@ -33,56 +33,61 @@ export default class Map extends React.Component {
 
   render() {
     return (
-      <ReactMapGL
-        {...this.state.viewport}
-        mapboxApiAccessToken="pk.eyJ1IjoibG91aXMxNDA0IiwiYSI6ImNrNm0zOGFkMDBqdG8zZXA3NGR5ejhzYnQifQ.Yt9WzWg8hdm6b9h5k5sxHw"
-        mapStyle="mapbox://styles/louis1404/ck6m5f35i0ucc1impooorg2qu"
-        onViewportChange={(viewport) => this.setState({ viewport })}
-        width="dummyValue"
-        onClick={this.handleClick}
-      >
-        {this.props.citiesFrom.map((city) => (
-          <Marker
-            className="marker-departure-city"
-            key={city.name}
-            latitude={parseFloat(city.lat)}
-            longitude={parseFloat(city.lng)}
-          >
-            <img src={yellowMarker} alt="Departure city" />
-          </Marker>
-        ))}
-        {this.props.citiesTo.map((city) => (
-          <div key={city.name}>
+      <div>
+        <ReactMapGL
+          {...this.state.viewport}
+          mapboxApiAccessToken="pk.eyJ1IjoibG91aXMxNDA0IiwiYSI6ImNrNm0zOGFkMDBqdG8zZXA3NGR5ejhzYnQifQ.Yt9WzWg8hdm6b9h5k5sxHw"
+          mapStyle="mapbox://styles/louis1404/ck6m5f35i0ucc1impooorg2qu"
+          onViewportChange={(viewport) => this.setState({ viewport })}
+          width="dummyValue"
+          onClick={this.handleClick}
+        >
+          {this.props.citiesFrom.map((city) => (
             <Marker
-              className="marker-destination"
+              className="marker-departure-city"
               key={city.name}
               latitude={parseFloat(city.lat)}
               longitude={parseFloat(city.lng)}
             >
-              <button
-                className="marker-destination-btn"
-                onClick={() => this.test(city.name)}
-              ></button>
-              <button className="destination-price" onClick={() => this.test(city.name)}>
-                {city.name} {city.prices.totalPrice}€
-              </button>
+              <img src={yellowMarker} alt="Departure city" />
             </Marker>
-            {ReactDOM.createPortal(
-              <div>
-                <Popup modal open={this.state.openPopup === city.name} className="test">
-                  <DetailsResultsPopup
-                    destination={city.name}
-                    trips={this.props.trips}
-                    key={city.name}
-                    travelType={this.props.travelType}
-                  />
-                </Popup>
-              </div>,
-              document.getElementById('cards-results')
-            )}
-          </div>
-        ))}
-      </ReactMapGL>
+          ))}
+          {console.log('is loading is ' + this.props.isLoading)}
+          {this.props.citiesTo.map((city) => (
+            <div key={city.name}>
+              <Marker
+                className="marker-destination"
+                key={city.name}
+                latitude={parseFloat(city.lat)}
+                longitude={parseFloat(city.lng)}
+              >
+                <button
+                  className="marker-destination-btn"
+                  onClick={() => this.test(city.name)}
+                ></button>
+                <button className="destination-price" onClick={() => this.test(city.name)}>
+                  {city.name} {city.prices.totalPrice}€
+                </button>
+              </Marker>
+            </div>
+          ))}
+        </ReactMapGL>
+        {this.props.citiesTo.map((city) =>
+          ReactDOM.createPortal(
+            <div>
+              <Popup modal open={true}>
+                <DetailsResultsPopup
+                  destination={city.name}
+                  trips={this.props.trips}
+                  key={city.name}
+                  travelType={this.props.travelType}
+                />
+              </Popup>
+            </div>,
+            document.getElementById('cards-results')
+          )
+        )}
+      </div>
     );
   }
 }
