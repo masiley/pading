@@ -33,7 +33,7 @@ export default class Map extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="map">
         <ReactMapGL
           {...this.state.viewport}
           mapboxApiAccessToken="pk.eyJ1IjoibG91aXMxNDA0IiwiYSI6ImNrNm0zOGFkMDBqdG8zZXA3NGR5ejhzYnQifQ.Yt9WzWg8hdm6b9h5k5sxHw"
@@ -75,7 +75,7 @@ export default class Map extends React.Component {
         {this.props.citiesTo.map((city) =>
           ReactDOM.createPortal(
             <div>
-              <Popup modal open={true}>
+              <Popup modal open={this.state.openPopup === city.name}>
                 <DetailsResultsPopup
                   destination={city.name}
                   trips={this.props.trips}

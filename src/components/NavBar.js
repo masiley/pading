@@ -135,20 +135,19 @@ export default class NavBarHome extends React.Component {
               address={this.state.address}
             />
           </div>
-          <div className="map">
-            <Map
-              citiesFrom={
-                this.props.searchData ? this.props.searchData.cities : this.state.citiesFrom
-              }
-              citiesTo={
-                this.props.searchData && this.props.searchData.destinationsWithPrice
-                  ? this.props.searchData.destinationsWithPrice
-                  : []
-              }
-              trips={this.props.trips}
-              travelType={this.props.travelType}
-            />
-          </div>
+
+          <Map
+            citiesFrom={
+              this.props.searchData ? this.props.searchData.cities : this.state.citiesFrom
+            }
+            citiesTo={
+              this.props.searchData && this.props.searchData.destinationsWithPrice
+                ? this.props.searchData.destinationsWithPrice
+                : []
+            }
+            trips={this.props.trips}
+            travelType={this.props.travelType}
+          />
         </div>
       </div>
     );
