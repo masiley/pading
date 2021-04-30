@@ -145,6 +145,8 @@ export default class NavBarHome extends React.Component {
                   ? this.props.searchData.destinationsWithPrice
                   : []
               }
+              trips={this.props.trips}
+              travelType={this.props.travelType}
             />
           </div>
         </div>

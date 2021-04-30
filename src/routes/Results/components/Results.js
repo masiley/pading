@@ -79,6 +79,8 @@ export default function Result(props) {
         isLoading={props.search.isLoading}
         searchTrips={props.searchTrips}
         searchData={props.search}
+        trips={props.search.trips}
+        travelType={props.search.travelType}
       />
       <div className="travel-results">
         <div className="travel-results-cards">
