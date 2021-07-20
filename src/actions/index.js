@@ -214,50 +214,39 @@ export const searchTrips = (cities, dateFrom, dateTo, stopTrip, travelType) => {
 };
 
 export const doFilter = (fullFilter, trips, a, departureCities) => {
-  console.log(fullFilter);
-  //TODO update full filter to
   return (dispatch) => {
-    const filterTypes = Object.keys(fullFilter);
-    filterTypes.forEach(function (filterType) {
-      console.log(filterType);
-      if (filterType === 'departure') {
-        console.log('departure filter');
-        console.log(fullFilter.departure);
-        const cities = Object.keys(fullFilter.departure);
-        // console.log(cities);
-        for (const city of cities) {
-          let trips_by_city = trips[city];
-          trips_by_city = trips_by_city.filter((trip) => {
-            if (
-              moment.utc(trip.way.local_departure).hours() >= fullFilter.departure[city].start &&
-              moment.utc(trip.way.local_departure).hours() <= fullFilter.departure[city].end
-            ) {
-              return true;
-            }
-            return false;
-          });
-          console.log(trips_by_city);
-          trips[city] = trips_by_city;
+    let cities = Object.keys(fullFilter.departure);
+
+    for (const city of cities) {
+      let trips_by_city = trips[city];
+      trips_by_city = trips_by_city.filter((trip) => {
+        if (
+          moment.utc(trip.way.local_departure).hours() >= fullFilter.departure[city].start &&
+          moment.utc(trip.way.local_departure).hours() <= fullFilter.departure[city].end
+        ) {
+          return true;
         }
-      }
-      // if (
-      //   filterType === 'return' &&
-      //   'start' in fullFilter.return[city] &&
-      //   'end' in fullFilter.return[city]
-      // ) {
-      //   trips_by_city = trips_by_city.filter((trip) => {
-      //     console.log('return filter');
-      //     if (
-      //       moment.utc(trip.return.local_arrival).hours() >= fullFilter.return[city].start &&
-      //       moment.utc(trip.return.local_arrival).hours() <= fullFilter.return[city].end
-      //     ) {
-      //       return true;
-      //     }
-      //     return false;
-      //   });
-      // }
-    });
-    console.log(a);
+        return false;
+      });
+      trips[city] = trips_by_city;
+    }
+
+    cities = Object.keys(fullFilter.return);
+    for (const city of cities) {
+      let trips_by_city = trips[city];
+      trips_by_city = trips_by_city.filter((trip) => {
+        console.log('return filter');
+        if (
+          moment.utc(trip.return.local_arrival).hours() >= fullFilter.return[city].start &&
+          moment.utc(trip.return.local_arrival).hours() <= fullFilter.return[city].end
+        ) {
+          return true;
+        }
+        return false;
+      });
+      trips[city] = trips_by_city;
+    }
+
     const commonDestinations = getCommonDestinations(trips, a);
 
     const data = {
