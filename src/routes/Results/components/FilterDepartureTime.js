@@ -14,17 +14,19 @@ export default function FilterDepartureTime(props) {
     };
 
     if (type === 'departure') {
-      setDepartureFilter({
+      departureFilter[city] = {
         start: filter[0],
         end: filter[1],
-      });
+      };
+      setDepartureFilter(departureFilter);
       fullFilter['departure'] = departureFilter;
     }
     if (type === 'return') {
-      setReturnFilter({
+      returnFilter[city] = {
         start: filter[0],
         end: filter[1],
-      });
+      };
+      setReturnFilter(returnFilter);
       fullFilter['return'] = returnFilter;
     }
 
