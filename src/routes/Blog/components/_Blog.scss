@@ -1,0 +1,92 @@
+.blog {
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        .search-article {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            form {
+                width: 100%;
+                border-bottom: solid 0.5rem #4c4c4c;
+                margin: 5rem 0 2rem 0;
+                padding: 1rem 0;
+                input {
+                    width: 100%;
+                    border: none;
+                    text-decoration: none;
+                    outline: none;
+                    font-family: 'PT Sans', sans-serif;
+                    font-weight: bold;
+                    font-size: 2.2rem;
+                    color: #4c4c4c
+                }::placeholder {
+                    color: #4c4c4c;
+                }
+            }
+            .fa-search {
+                margin-left: 1rem;
+            }
+        }
+        .search-tags {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: 80%;
+            margin-bottom: 5rem;
+            button {
+                border-radius: 1.8rem;
+                padding: 0.7rem 1.3rem;
+                margin: 0.7rem;
+                color: white;
+                font-weight: bold;
+                font-size: 1.8rem;
+            }
+            .ecology {
+                background-color: #427103;
+                &:hover {
+                    background-color: rgba(66, 113, 3, 0.9);
+                }
+            }
+            .inspiration {
+                background-color: #ff9e00;
+                &:hover {
+                    background-color: rgba(255, 158, 0, 0.9);
+                }
+            }
+            .destinations {
+                background-color: #85bf82;
+                &:hover {
+                    background-color: rgba(133, 191, 130, 0.9);
+                }
+            }
+            .traveltips {
+                background-color: #19a6ee;
+                &:hover {
+                    background-color: rgba(25, 166, 238, 0.9);
+                }
+            }
+            .pading {
+                background-color: #FFB133;
+                &:hover {
+                    background-color: rgba(255, 177, 51, 0.9);
+                }
+            }
+            .culture {
+                background-color: #41B6F1;
+                &:hover {
+                    background-color: rgba(65, 182, 241, 0.9);
+                }
+            }
+        }
+    }
+}

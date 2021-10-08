@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 import Home from './routes/Search/containers/HomeContainer';
 import Results from './routes/Results/containers/ResultsContainer';
+import Blog from './routes/Blog/components/Blog';
 import { Route, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
@@ -20,6 +21,7 @@ render(
       <Route component={App} />
       <Route exact path="/" component={Home} />
       <Route path="/destinations" component={Results} />
+      <Route path="/blog" component={Blog} />
     </Router>
   </Provider>,
   document.getElementById('root')

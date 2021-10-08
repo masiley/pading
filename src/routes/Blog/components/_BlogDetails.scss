@@ -1,0 +1,99 @@
+.blog-article {
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    .blog-article-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        margin: 5rem 0;
+        border-radius: 1rem;
+        .fa-arrow-circle-left {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #4c4c4c;
+        }
+        h1 {
+            font-family: 'PT Sans', sans-serif;
+            font-weight: bold;
+            font-size: 2.5rem;
+            color: #4c4c4c;
+            width: cover;
+            margin-bottom: 1rem;
+            width: 75%;
+        }
+        .blog-article-date {
+            width: 75%;
+            text-align: left;
+            color: #4c4c4c;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .blog-article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            width: 75%;
+            margin-bottom: 2rem;
+            span {
+                border-radius: 1.2rem;
+                padding: 0.5rem 1rem;
+                margin: 0.3rem;
+                color: white;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+            .Ecology {
+                background-color: #427103;
+            }
+            .Inspiration {
+                background-color: #ff9e00;
+            }
+            .Destinations {
+                background-color: #85bf82;
+            }
+            .Traveltips {
+                background-color: #19a6ee;
+            }
+            .Pading {
+                background-color: #FFB133;
+            }
+            .Culture {
+                background-color: #41B6F1;
+            }
+        }
+        img {
+            height: 20rem;
+            width: 75%;
+            border-radius: 0.5rem;
+            object-fit: cover;
+            margin-bottom: 3rem;
+        }
+        p {
+            width: 75%;
+            color: #4c4c4c;
+        }
+    }
+
+}
+
+@media (max-width: 840px) {
+    .blog-article-content {
+        width: 100%;
+    }
+  }
+  
+  @media (min-width: 841px) {
+   .blog-article-content{
+       width: 70%;
+   }
+  }
