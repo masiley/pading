@@ -31,7 +31,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^5.0.1",
     "reactjs-popup": "^1.5.0",
     "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
